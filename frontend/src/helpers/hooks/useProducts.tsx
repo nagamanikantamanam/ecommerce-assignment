@@ -24,7 +24,7 @@ function useProducts() {
         setProducts(fetchedProducts);
         console.log(mode + "mode");
       } catch (error) {
-        //console.error("Error fetching products:", error);
+        
       } finally {
         setLoading(false);
       }
@@ -32,7 +32,7 @@ function useProducts() {
 
     fetchProducts();
   }, [query, mode]);
-  //console.log("before return");
+ 
   return { products, loading, query, mode };
 }
 

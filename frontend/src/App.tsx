@@ -23,6 +23,7 @@ const router = createBrowserRouter([
       },
       {
         element: <RequireAuth allow="admin" />,
+        
         children: [{ path: "/admin", element: <AdminPage /> }],
       },
       { path: "*", element: <h1>Page Not Available</h1> },

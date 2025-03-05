@@ -1,0 +1,13 @@
+SELECT P.*, 
+       (SELECT AVG(R.rating) 
+        FROM reviews AS R 
+        WHERE R.product_id = P.product_id) AS average_rating
+FROM products AS P
+WHERE (P.price >= 0 
+  AND P.price <= 1000000
+  
+  AND (SELECT AVG(R.rating) 
+       FROM reviews AS R 
+       WHERE R.product_id = P.product_id) >=3
+) AND (P.category=''
+     or P.title ILIKE '%soft%');
