@@ -1,46 +1,22 @@
 export interface ProductType {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  tags: string[];
-  brand: string;
-  sku: string;
-  weight: number;
-  dimensions: {
-    width: number;
-    height: number;
-    depth: number;
-  };
-  warrantyInformation: string;
-  shippingInformation: string;
-  availabilityStatus: string;
-  reviews: {
-    rating: number;
-    comment: string;
-    date: string;
-    reviewerName: string;
-    reviewerEmail: string;
-  }[];
-  returnPolicy: string;
-  minimumOrderQuantity: number;
-  meta: {
-    createdAt: string;
-    updatedAt: string;
-    barcode: string;
-    qrCode: string;
-  };
-  images: string[];
-  thumbnail: string;
-}
+
+    average_rating: string;  
+    category: string;
+    description: string;
+    discount: string;       
+    price: string;           
+    product_id: number;
+    stock: number;
+    title: string;
+    image:string;
+    reviews?:[]
+  }
+  
+
 type CartItem = {
   title: string;
   id: number;
-  price: number;
+  price: string;
   image: string;
 };
 export type { CartItem };

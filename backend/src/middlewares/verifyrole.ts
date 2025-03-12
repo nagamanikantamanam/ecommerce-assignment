@@ -1,10 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-interface coustomreq extends Request{
-    role?:string,
-    user_id?:string
-}
+
 const verfyrole=(allowedrole:string)=>{
-    return (req:coustomreq, res:Response, next:NextFunction) => {
+    return (req:Request, res:Response, next:NextFunction) => {
         console.log("rollle check");
        
         const role:string |undefined= req?.role;

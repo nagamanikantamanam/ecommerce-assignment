@@ -5,9 +5,9 @@ async function get_user(email: string, mobile: string): Promise<any> {
   try {
     
     
-    const query = "SELECT * FROM USERS WHERE email=$1 OR mobile=$2";
+    const query = "select * from users as u inner join roles as r on u.role_id=r.role_id WHERE u.email=$1 OR u.mobile=$2;";
     
-    
+   
     const res = await pool.query(query, [email, mobile]);
     
     

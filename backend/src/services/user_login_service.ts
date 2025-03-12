@@ -7,7 +7,7 @@ const user_login_service = async (
   mobile: string,
   email: string,
   password: string
-): Promise<{ statuscode: number;data:{ message: string; username?:string; user_id?:string; accessToken?: string; refreshToken?: string }}> => {
+): Promise<{ statuscode: number;data:{ message: string; username?:string; user_id?:string; accessToken?: string; refreshToken?: string;role?:string ,email?:string,mobile?:string}}> => {
   
   let res = await get_user(email, mobile);
   
@@ -18,9 +18,10 @@ const user_login_service = async (
     const match = await compare(password, user.password);
     
     if (match) {
-      
-      const accessToken = sign({ user_id: user.user_id, email: user.email ,mobile:user.mobile,role:user.role_id}, "your-secret-key", { expiresIn: "1d" });
-      const refreshToken = sign({ user_id: user.user_id, email: user.email,mobile:user.mobile,role:user.role_id }, "your-refresh-secret-key", { expiresIn: "7d" });
+      const ACCESS_TOKEN_SECRET:string=process.env.ACCESS_TOKEN_SECRET || '';
+      const REFRESH_TOKEN_SECRET:string=process.env.REFRESH_TOKEN_SECRET||'';
+      const accessToken = sign({ user_id: user.user_id, email: user.email ,mobile:user.mobile,role:user.role_id}, ACCESS_TOKEN_SECRET, { expiresIn: "1d" });
+      const refreshToken = sign({ user_id: user.user_id, email: user.email,mobile:user.mobile,role:user.role_id }, REFRESH_TOKEN_SECRET, { expiresIn: "7d" });
       await update_refreshtoken(email,mobile,refreshToken);
     
       return {
@@ -28,6 +29,9 @@ const user_login_service = async (
         data:{
         user_id:user.user_id,
         username:user.name,
+        email:user.email,
+        mobile:user.mobile,
+        role:user.role_id,
         message: "Login successful",
         accessToken,
         refreshToken

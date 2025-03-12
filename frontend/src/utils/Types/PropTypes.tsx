@@ -10,6 +10,6 @@ export interface ProductDetailsProp {
 export type BuyButtonPropType = { id: number };
 export type ProductCardProp = { product: ProductType; index: number };
 export type ProductImageProp = {
-  image: string;
+  image: string |undefined;
   name: string;
 };

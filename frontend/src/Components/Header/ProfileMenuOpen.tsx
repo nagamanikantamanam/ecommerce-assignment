@@ -2,7 +2,9 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import useMenuStore from "../../Stores/MenuStore";
 import useAuthStore from "../../Stores/useAuthStore";
+import { useNavigate } from "react-router-dom";
 function ProfileMenuOpen() {
+  const navigate=useNavigate();
   const anchorEl = useMenuStore((state) => state.anchorEl);
   const handleMenuClose = useMenuStore((state) => state.handleMenuClose);
   const isMenuOpen = useMenuStore((state) => state.isMenuOpen);
@@ -24,7 +26,7 @@ function ProfileMenuOpen() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={()=>{handleMenuClose(); navigate('/profile');}}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem
         onClick={() => {

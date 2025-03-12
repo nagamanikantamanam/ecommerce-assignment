@@ -2,6 +2,7 @@ import {upload} from "../utils/multerconfig"
 import { Request, Response, NextFunction } from 'express';
 import multer from "multer"
 const handleimage=(req:Request,res:Response,next:NextFunction)=>{
+    console.log("inside image uplode")
     upload(req, res, (err) => {
        
         let responseObject = {
@@ -10,6 +11,7 @@ const handleimage=(req:Request,res:Response,next:NextFunction)=>{
         };
     
         if (err) {
+            console.log("errrrr image upload")
             if (err instanceof multer.MulterError) {
                 if (err.code === 'LIMIT_FILE_SIZE') {
                     responseObject.code = 'large';
@@ -27,6 +29,7 @@ const handleimage=(req:Request,res:Response,next:NextFunction)=>{
                 res.status(400).send(responseObject);  
             }
         } else {
+            console.log("succcc")
             responseObject.code = 'success';
             responseObject.message = 'File uploaded successfully';
             req.body.image=req.file?.path;

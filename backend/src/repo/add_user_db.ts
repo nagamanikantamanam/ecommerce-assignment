@@ -15,6 +15,7 @@ const add_user_db=  async ( mobile: number, email: string,password:string,userna
             message:"user created"
         }
     } catch (error) {
+        console.log(Object.getOwnPropertyNames(error));
         console.error('Error adding user :', error);
         return {
             status: false,

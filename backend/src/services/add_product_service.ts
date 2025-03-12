@@ -1,4 +1,5 @@
 import { add_product_db } from "../repo/add_product_db";
+import CustomError from "../utils/customerror";
 
 const add_product_service = async (
   title: string,
@@ -10,7 +11,7 @@ const add_product_service = async (
   stock: number
 ): Promise<{ statusCode: number, data: { status: boolean, message: string } }> => {
   
-  
+  console.log("add product service");
 
   try {
     const response = await add_product_db(
@@ -31,14 +32,12 @@ const add_product_service = async (
       },
     };
   } catch (error) {
-    console.error('Error adding product:', error);
-    return {
-      statusCode: 500,
-      data: {
-        status: false,
-        message: 'Internal server error while adding product.',
-      },
-    };
+    
+    if(error instanceof CustomError){
+      console.log("errr in service in custom")
+      throw error;
+    }
+    throw new CustomError("Internal server Error",500,"SERVICE_LEVEL");
   }
 };
 

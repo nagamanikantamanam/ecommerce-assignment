@@ -10,11 +10,16 @@ import UserActionsMobile from "./UserActionsMobile";
 import CartMenu from "../Cart/CartMenu";
 import LoginIcon from "@mui/icons-material/Login";
 import useAuthStore from "../../Stores/useAuthStore";
-import { useNavigate, useLocation, Outlet } from "react-router-dom";
+import {   Outlet } from "react-router-dom";
+import LoginPage from "../Pages/LoginPage"
+
+import useMenuStore from "../../Stores/MenuStore";
 export default function Header() {
-  const navigate = useNavigate();
+
   const user = useAuthStore((state) => state.user);
-  const location = useLocation();
+  const setLoginOpen=useMenuStore((state)=>state.setLoginOpen);
+ 
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -22,6 +27,7 @@ export default function Header() {
           <Toolbar>
             <Logo></Logo>
             <SearchBox></SearchBox>
+           
             <Box sx={{ flexGrow: 1 }} />
             {user ? (
               <>
@@ -31,7 +37,8 @@ export default function Header() {
             ) : (
               <LoginIcon
                 onClick={() => {
-                  navigate("/login", { state: { from: location } });
+                 console.log("login clicked")
+                 setLoginOpen()
                 }}
               ></LoginIcon>
             )}
@@ -40,6 +47,7 @@ export default function Header() {
         <ProfileMenuOpen />
         <ProfileMenuMobile></ProfileMenuMobile>
         <CartMenu></CartMenu>
+       <LoginPage></LoginPage>
       </Box>
       <Box sx={{ mt: 15 }}>
         <Outlet></Outlet>

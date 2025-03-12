@@ -3,7 +3,7 @@ import ProductImage from "../ProductPageCompos/ProductImage";
 import UserActions from "../ProductPageCompos/UserActions";
 import ProductDetails from "../ProductPageCompos/ProductDeatils";
 import useProduct from "../../helpers/hooks/useProduct";
-
+import getImmageUrl from "../../utils/getImageUrl";
 function Product() {
   const { product, loading } = useProduct();
 
@@ -35,7 +35,7 @@ function Product() {
             }}
           >
             <ProductImage
-              image={product?.images[0]}
+              image={product?.image ? getImmageUrl(product?.image):undefined}
               title={product?.title}
             ></ProductImage>
             {product && <UserActions product={product}></UserActions>}

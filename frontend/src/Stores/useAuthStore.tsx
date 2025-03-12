@@ -9,12 +9,17 @@ const useAuthStore = create<AuthState>()(
       accessToken: null,
       refreshToken: null,
       role: null,
-      setAuth: (user: string, accessToken: string, refreshToken: string) =>
+      email:null,
+      mobile:null,
+      setAuth: (user: string, accessToken: string, refreshToken: string,role:string,email:string,mobile:string) =>
         set((state) => ({
           ...state,
+          role,
           user,
           accessToken,
           refreshToken,
+          email,
+          mobile
         })),
 
       setAcessToken: (accessToken: string) =>

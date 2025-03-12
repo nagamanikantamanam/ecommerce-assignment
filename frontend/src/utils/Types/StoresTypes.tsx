@@ -13,6 +13,7 @@ export interface MenuStore {
   isMenuOpen: boolean;
   isMobileMenuOpen: boolean;
   isCartMenuOpen: boolean;
+  isLoginOpen:boolean;
   setCartAnchorEl: (anchorEl: HTMLElement | null) => void;
   handleCartMenuOpen: (event: React.MouseEvent<HTMLElement>) => void;
   handleCartMenuClose: () => void;
@@ -23,18 +24,23 @@ export interface MenuStore {
   handleMobileMenuClose: () => void;
   handleMenuClose: () => void;
   handleMobileMenuOpen: (event: React.MouseEvent<HTMLElement>) => void;
+  setLoginOpen:()=>void,
+  setLoginClose:()=>void,
 }
 export interface AuthState {
   user: string | null;
-
+  email:string|null;
+  mobile:string|null;
   accessToken: string | null;
   refreshToken: string | null;
   role: string | null;
   setAuth: (
     user: string,
-
+    role:string,
     accessToken: string,
-    refreshToken: string
+    refreshToken: string,
+    email:string,
+    mobile:string
   ) => void;
   setAcessToken: (accessToken: string) => void;
   setRole: (role: string) => void;

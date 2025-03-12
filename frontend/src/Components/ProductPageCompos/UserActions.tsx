@@ -18,14 +18,14 @@ function UserActions({ product }: { product: ProductType }) {
       <Grid container spacing={2} justifyContent="center">
         <Grid item xs={6}>
           <AddCartButton
-            id={product.id}
+            id={product.product_id}
             price={product.price}
-            image={product.images[0]}
+            image={product.image}
             title={product.title}
           ></AddCartButton>
         </Grid>
         <Grid item xs={6}>
-          <OrderNowButton></OrderNowButton>
+          <OrderNowButton product_id={Number(product.product_id)}></OrderNowButton>
         </Grid>
       </Grid>
     </Box>

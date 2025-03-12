@@ -7,7 +7,7 @@ function CategoryCard({ icon, name, index }: CategoryCardProps) {
     <Grid item xs={6} sm={3} key={index}>
       <Paper
         component={Link}
-        to={`/products/categories?q=${name}`}
+        to={`products/?searchquery=&category=${name}&minp=10&maxp=100000&minrat=0`}
         elevation={2}
         sx={{
           p: 2,

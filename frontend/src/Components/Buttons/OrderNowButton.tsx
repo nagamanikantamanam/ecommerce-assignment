@@ -1,21 +1,20 @@
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-function OrderNowButton() {
+import { styled } from '@mui/system';
+const StyledOrderNowButton=styled(Button)({width: "100%",
+  backgroundColor: "secondary.main",
+  "&:hover": { backgroundColor: "secondary.dark" },}) 
+const OrderNowButton=({ product_id }: { product_id: number })=> {
   const navigate = useNavigate();
   return (
-    <Button
+    <StyledOrderNowButton
       variant="contained"
-      sx={{
-        width: "100%",
-        backgroundColor: "secondary.main",
-        "&:hover": { backgroundColor: "secondary.dark" },
-      }}
       onClick={() => {
-        navigate("/ordernow");
+        navigate(`/ordernow/${product_id}`);
       }}
     >
       Order Now
-    </Button>
+    </StyledOrderNowButton>
   );
 }
 export default OrderNowButton;

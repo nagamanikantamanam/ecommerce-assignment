@@ -1,12 +1,12 @@
 import FaceRetouchingNaturalIcon from "@mui/icons-material/FaceRetouchingNatural";
 import ChairIcon from "@mui/icons-material/Chair";
 import FilterVintageIcon from "@mui/icons-material/FilterVintage";
-
+import DvrIcon from '@mui/icons-material/Dvr';
 import { Category } from "../../../utils/Types/CommonTypes";
 const categories: Category[] = [
   {
-    name: "beauty",
-    icon: <FaceRetouchingNaturalIcon sx={{ fontSize: 40, color: "#1976d2" }} />,
+    name: "Electronics",
+    icon: <DvrIcon sx={{ fontSize: 40, color: "#1976d2" }} />,
   },
   {
     name: "fragrances",

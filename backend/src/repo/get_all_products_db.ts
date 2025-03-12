@@ -6,7 +6,7 @@ const get_all_products_db = async (
   minp: number,
   maxp: number,
   minrat: number
-): Promise<{ status: boolean, products: any[], message: string }> => {
+): Promise<{ status: boolean, products: any[], message: string,length:number }> => {
   const pool = await getpoolinstance();
   
   try {
@@ -15,10 +15,10 @@ const get_all_products_db = async (
       FROM products AS P
       WHERE (P.price >= $1 AND P.price <= $2 
       AND (SELECT AVG(R.rating) FROM reviews AS R WHERE R.product_id = P.product_id) >=$3) 
-      AND (P.category=$4 or P.title ILIKE '%'||$5||'%');
+      AND (P.category ILIKE '%'||$4||'%' AND P.title ILIKE '%'||$5||'%' ) ORDER BY P.discount;
     `;
 
-
+    
 
     
     const params: any[] = [minp, maxp, minrat, category, searchquery];
@@ -30,12 +30,14 @@ const get_all_products_db = async (
       return {
         status: true,
         products: result.rows,
+        length:result.rows.length,
         message: 'Products fetched successfully.',
       };
     } else {
       return {
         status: false,
         products: [],
+        length:0,
         message: 'No products found.',
       };
     }
@@ -44,6 +46,7 @@ const get_all_products_db = async (
     return {
       status: false,
       products: [],
+      length:0,
       message: 'Error fetching products.',
     };
   }

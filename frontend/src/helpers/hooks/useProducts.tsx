@@ -1,28 +1,33 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { SearchProducts, ProductsByCat } from "../search_products";
-import { useParams } from "react-router-dom";
+import { SearchProducts } from "../search_products";
+
 import { ProductType } from "../../utils/Types/CommonTypes";
 function useProducts() {
-  //console.log("inside hook");
+  console.log("inside use products")
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchParams] = useSearchParams();
-  const query = searchParams.get("q") || "";
-  const params = useParams();
-  const mode = params.mode || "search";
-
+  
+  
+  
+  const searchQuery = searchParams.get('searchquery') || '';
+  const category = searchParams.get('category') || '';
+  const minPrice = searchParams.get('minp') || '10';
+  const maxPrice = searchParams.get('maxp') || '100000';
+  const minRating = searchParams.get('minrat') || '0';
+  console.log(searchQuery,category,minPrice,maxPrice,minRating)
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
 
       try {
-        const fetchedProducts =
-          mode === "search"
-            ? await SearchProducts(query)
-            : await ProductsByCat(query);
+        console.log("search products called ");
+        const fetchedProducts =await SearchProducts(searchQuery,category,minPrice,maxPrice,minRating);
+        console.log(fetchProducts);  
         setProducts(fetchedProducts);
-        console.log(mode + "mode");
+        console.log("fetched");
+       
       } catch (error) {
         
       } finally {
@@ -31,9 +36,9 @@ function useProducts() {
     };
 
     fetchProducts();
-  }, [query, mode]);
+  }, [searchQuery,category,minPrice,maxPrice,minRating]);
  
-  return { products, loading, query, mode };
+  return { products, loading };
 }
 
 export default useProducts;

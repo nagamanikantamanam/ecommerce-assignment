@@ -16,10 +16,7 @@ function ProductDetails({ product }: ProductDetailsProp) {
         <Typography variant="h4" sx={{ fontWeight: "bold" }}>
           {product?.title}
         </Typography>
-        <Typography variant="h6" color="textSecondary">
-          Brand: {product?.brand}
-        </Typography>
-
+       
         <Typography
           variant="body1"
           sx={{
@@ -35,7 +32,7 @@ function ProductDetails({ product }: ProductDetailsProp) {
           variant="h5"
           sx={{ fontSize: "1.5rem", color: "primary.main", marginTop: 1 }}
         >
-          ${product?.price.toFixed(2)}
+          ${Number(product?.price).toFixed(2)}
         </Typography>
         <ProductReviews product={product}></ProductReviews>
       </Paper>

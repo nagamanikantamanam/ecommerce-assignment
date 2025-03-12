@@ -10,7 +10,7 @@ function SearchBox() {
   const [TempQuery, setTempQuery] = useState("");
 
   const handleClick = () => {
-    navigate(`/products/search?q=${TempQuery}`);
+    navigate(`products/?searchquery=${TempQuery}&category=&minp=10&maxp=10000000&minrat=0`);
   };
   return (
     <Search>

@@ -5,7 +5,7 @@ const get_all_orders_db = async (): Promise<any[]> => {
 
   try {
     const query = `
-      SELECT * FROM orders;
+      select o.order_id,p.title,o.status_code from orders as o inner join products as p on p.product_id=o.product_id ;
     `;
     const res = await pool.query(query);
 

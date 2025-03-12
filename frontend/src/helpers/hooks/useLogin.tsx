@@ -1,12 +1,15 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import useAuthStore from "../../Stores/useAuthStore";
 import { api_public } from "../../utils/api";
-import useAxiosPrivate from "./useAxiosPrivate";
+import useMenuStore from "../../Stores/MenuStore"
 
 interface LoginResponse {
   accessToken: string;
   refreshToken: string;
   username: string;
+  role:string;
+  email:string;
+  mobile:string;
 }
 
 const useLogin = (): ((
@@ -16,32 +19,36 @@ const useLogin = (): ((
   const navigate = useNavigate();
   const location = useLocation();
   const setAuth = useAuthStore((state) => state.setAuth);
-  const setRole = useAuthStore((state) => state.setRole);
-  const api_private = useAxiosPrivate();
+ 
+  const setLoginClose = useMenuStore((state) => state.setLoginClose);
   const from = location.state?.from?.pathname || "/";
-
+console.log("login hook")
   const login = async (username: string, password: string): Promise<void> => {
+    console.log("calleld login")
     try {
+      
       const response = await api_public.post<LoginResponse>(
         "auth/login",
-        { username, password },
+        {mobile:isNaN(username as any)?"":username, email:isNaN(username as any)?username:"", password },
         { headers: { "Content-Type": "application/json" } }
       );
 
-      const { accessToken, refreshToken } = response.data;
-
-      await setAuth(username, refreshToken, accessToken);
-      const response2 = await api_private.get("/auth/me");
-      const role = response2.data.role;
-      console.log(role);
-      setRole(role);
-      if (role == "user") {
+      const { refreshToken,accessToken,role ,email,mobile} = response.data;
+      console.log('acess',accessToken);
+      console.log('role',role);
+      console.log('refresh',refreshToken);
+      await setAuth(username,accessToken, refreshToken, role,email,mobile);
+      
+      console.log("user login successs")
+      setLoginClose();
+      if (role == "1") {
         navigate(from, { replace: true });
       } else {
         navigate("/admin");
       }
     } catch (err) {
       if (err instanceof Error) {
+        console.log("failed")
         console.log(err.message);
       }
     }

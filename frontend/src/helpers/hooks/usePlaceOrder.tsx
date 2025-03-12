@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
-import { api_private } from "../../utils/api";
+import useAxiosPrivate from "./useAxiosPrivate";
+import { useParams } from 'react-router-dom'
 function usePlaceOrder() {
   const [PlacingOrder, setPlacingOrder] = useState<boolean>(true);
   const [ErrMsg, setErrMsg] = useState<string>("");
-
+  const api_private=useAxiosPrivate();
+  const { product_id } = useParams();
   useEffect(() => {
     const placeOrder = async () => {
       try {
         let response = await api_private.post<{
           status: number;
           message: string;
-        }>("/http/200");
+        }>("orders/create",{
+          "product_id":product_id
+        });
         if (response.status == 200) {
           setPlacingOrder(false);
         } else {

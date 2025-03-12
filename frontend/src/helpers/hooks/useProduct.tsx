@@ -5,14 +5,17 @@ import { api_public } from "../../utils/api";
 
 function useProduct() {
   const { id } = useParams();
+  console.log('id',id)
   const [product, setProduct] = useState<ProductType>();
   const [loading, setLoading] = useState<boolean>(true);
-
+console.log("rtfygjhkhhg")
   useEffect(() => {
     async function getProduct() {
       setLoading(true);
       try {
-        const response = await api_public.get<ProductType>(`/products/${id}`);
+        console.log("tryyy")
+        const response = await api_public.get<ProductType>(`/product/${id}`);
+        console.log(response.data)
         setProduct(response.data);
       } catch (error) {
         console.error("Error fetching product:", error);

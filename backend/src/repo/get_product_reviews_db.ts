@@ -4,10 +4,8 @@ const get_product_reviews_db = async (product_id: string): Promise<{ reviews: an
   
     try {
       const query = `
-        SELECT * 
-        FROM reviews 
-        WHERE product_id = $1;
-      `;
+      select r.*,u.name from reviews as r inner join users as u on u.user_id=r.user_id WHERE product_id = $1;;
+        `;
   
       const params: any[] = [product_id];
       

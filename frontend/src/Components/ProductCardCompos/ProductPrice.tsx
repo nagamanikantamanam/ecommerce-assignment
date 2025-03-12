@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-type productprice = { price: number; discount: number };
+type productprice = { price: string; discount: string };
 import { memo } from "react";
 function ProductPrice({ price, discount }: productprice) {
   return (

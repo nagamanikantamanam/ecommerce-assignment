@@ -2,7 +2,6 @@ import { getpoolinstance } from "../db/getpoolinstance";
 
 const update_user_db = async (
   user_id: number,
-  name: string,
   email: string,
   mobile: string
 ): Promise<boolean> => {
@@ -11,10 +10,10 @@ const update_user_db = async (
   try {
     const query = `
       UPDATE users
-      SET name = $1, email = $2, mobile = $3
-      WHERE user_id = $4;
+      set  email = $1, mobile = $2
+      WHERE user_id = $3;
     `;
-    const res = await pool.query(query, [name, email, mobile, user_id]);
+    const res = await pool.query(query, [ email, mobile, user_id]);
 
     if (res.rowCount === 0) {
       return false; 

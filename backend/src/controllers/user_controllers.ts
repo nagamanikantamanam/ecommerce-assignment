@@ -26,11 +26,12 @@ const add_user = async (req: Request, res: Response): Promise<any> => {
 export { add_user };
 const update_user = async (req: Request, res: Response): Promise<any> => {
   console.log('update user');
-  const { name, email, mobile,user_id } = req.body;
+  const {  email, mobile } = req.body;
+  const user_id=req.user_id||0;
   
 
   try {
-    const response = await update_user_service(user_id, name, email, mobile);
+    const response = await update_user_service(user_id, email, mobile);
 
     return res.status(response.statusCode).json(response.data);
   } catch (error) {

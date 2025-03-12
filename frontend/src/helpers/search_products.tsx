@@ -1,11 +1,14 @@
 import { api_public } from "../utils/api";
 import { ProductType } from "../utils/Types/CommonTypes";
 
-async function SearchProducts(query: string): Promise<ProductType[]> {
+async function SearchProducts(searchQuery:string,category:string,minPrice:string,maxPrice:string,minRating:string): Promise<ProductType[]> {
   try {
+    console.log("inside search products")
     const response = await api_public.get<{ products: ProductType[] }>(
-      "/products"
+      `product/get-all-products?searchquery=${searchQuery}&category=${category}&minp=${minPrice}&maxp=${maxPrice}&minrat=${minRating}`
     );
+    console.log("products")
+    console.log(response.data.products);
     const products: ProductType[] = response.data.products;
 
     const filteredProducts = products.filter((product) =>
@@ -13,8 +16,8 @@ async function SearchProducts(query: string): Promise<ProductType[]> {
         product.title,
         product.description,
         product.category,
-        ...product.tags,
-      ].some((field) => field.toLowerCase().includes(query.toLowerCase()))
+      
+      ].some((field) => field.toLowerCase().includes(searchQuery.toLowerCase()))
     );
 
     return filteredProducts;

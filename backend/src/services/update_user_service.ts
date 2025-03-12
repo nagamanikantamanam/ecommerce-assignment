@@ -2,12 +2,11 @@ import { update_user_db } from "../repo/update_user_db";
 
 const update_user_service = async (
   user_id: number,
-  name: string,
   email: string,
   mobile: string
 ): Promise<{ statusCode: number, data: { status: boolean, message: string } }> => {
   try {
-    const isUpdated = await update_user_db(user_id, name, email, mobile);
+    const isUpdated = await update_user_db(user_id, email, mobile);
 
     if (!isUpdated) {
       return {

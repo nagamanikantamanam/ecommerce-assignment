@@ -11,3 +11,5 @@ WHERE (P.price >= 0
        WHERE R.product_id = P.product_id) >=3
 ) AND (P.category=''
      or P.title ILIKE '%soft%');
+
+

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { add_product_service } from '../services/add_product_service';
 import { update_stock_service } from '../services/update_stock_service';
 import { get_all_products_service } from '../services/get_all_products_service';
@@ -6,9 +6,11 @@ import { delete_product_service } from '../services/delete_product_service';
 import { get_product_service } from '../services/get_product_service';
 
 import { add_review_service } from '../services/add_review_service';
-const add_product = async (req: Request, res: Response): Promise<any> => {
+import CustomError from '../utils/customerror';
+const add_product = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { title, category, price, description, discount, image, stock } = req.body;
-
+console.log("prodiuct addd");
+console.log(title, category, price, description, discount, image, stock);
   try {
     const response = await add_product_service(
       title,
@@ -21,13 +23,12 @@ const add_product = async (req: Request, res: Response): Promise<any> => {
     );
 
     return res.status(response.statusCode).json(response.data);
-  } catch (error) {
-    console.error('Error while adding product:', error);
+  } catch (error:any) {
+    if(error?.errorstage){
+      next(error)
+    }
+    next(new CustomError("Internal server Error",500,"Controller level"))
 
-    return res.status(500).json({
-      status: false,
-      message: 'Internal Server Error, please try again later.',
-    });
   }
 };
 
@@ -38,7 +39,7 @@ export { add_product };
 
 const update_stock = async (req: Request, res: Response): Promise<any> => {
   const { product_id, stock } = req.body;
-
+  
   
   if (!product_id || stock === undefined) {
     return res.status(400).json({
@@ -123,7 +124,7 @@ const get_product = async (req: Request, res: Response): Promise<any> => {
   try {
     const product_response = await get_product_service(product_id);
 
-    return res.status(product_response.statusCode).json(product_response.data);
+    return res.status(product_response.statusCode).json(product_response.data.product);
   } catch (error) {
     console.error('Error while getting product:', error);
 
@@ -142,8 +143,8 @@ export {get_product}
 
 const add_review = async (req: Request, res: Response): Promise<any> => {
   console.log("reviweeee")
-  const { user_id, order_id, rating, review, product_id } = req.body;
-
+  const {  order_id, rating, review, product_id } = req.body;
+const user_id=req.user_id || 0;
   console.log("Adding review:", { user_id, order_id, rating, review, product_id });
    
   try {

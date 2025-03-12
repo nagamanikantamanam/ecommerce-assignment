@@ -8,21 +8,25 @@ import {
 import Filters from "../ProductsPageCompos/Filters";
 import Product from "../Cards/ProductCard";
 import useProducts from "../../helpers/hooks/useProducts";
-import useFilterStore from "../../Stores/FilterSore";
-
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import Box from "@mui/material";
+import { useState } from "react";
+const PAGE_SIZE=5;
 function ProductsPage() {
   console.log("product page");
-  const { priceRange, rating, discount } = useFilterStore();
+  const [currentpage, setCP] = useState(1);
 
   const { products, loading } = useProducts();
-
-  const filteredProducts = products.filter(
-    (product) =>
-      product.price >= priceRange[0] &&
-      product.price <= priceRange[1] &&
-      product.rating >= rating &&
-      product.discountPercentage >= discount
-  );
+  const totalProducts=products.length;
+const noofpages=Math.ceil(totalProducts/PAGE_SIZE);
+const start=(currentpage-1)*PAGE_SIZE;
+const end=start+PAGE_SIZE;
+const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  console.log("currentpage",currentpage);
+  console.log("value",value)
+  setCP(value);
+};
 
   return (
     <Container
@@ -67,9 +71,9 @@ function ProductsPage() {
             >
               <CircularProgress size={50} />
             </Grid>
-          ) : filteredProducts.length > 0 ? (
+          ) : products.length > 0 ? (
             <Grid container spacing={3}>
-              {filteredProducts.map((product, index) => (
+              {products.slice(start,end).map((product, index) => (
                 <Product product={product} index={index} key={index} />
               ))}
             </Grid>
@@ -83,10 +87,12 @@ function ProductsPage() {
           )}
         </Grid>
       </Grid>
-      {(() => {
-        console.log("nedered jsx");
-        return 1;
-      })()}
+      
+      <Stack spacing={2}>
+  
+     <Pagination count={noofpages} variant="outlined" shape="rounded" onChange={handleChange}/>
+    </Stack>
+   
     </Container>
   );
 }

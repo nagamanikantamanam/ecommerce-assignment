@@ -10,6 +10,13 @@ const useMenuStore = create<MenuStore>((set) => ({
   isMobileMenuOpen: false,
   cartAnchorEl: null,
   isCartMenuOpen: false,
+  isLoginOpen:false,
+  setLoginOpen:()=>{
+    set({isLoginOpen:true})
+  },
+  setLoginClose:()=>{
+    set({isLoginOpen:false})
+  },
   setCartAnchorEl: (anchorEl) =>
     set({ cartAnchorEl: anchorEl, isCartMenuOpen: Boolean(anchorEl) }),
   handleCartMenuOpen: (event) => {

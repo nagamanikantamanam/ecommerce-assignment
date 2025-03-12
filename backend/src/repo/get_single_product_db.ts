@@ -5,9 +5,7 @@ const get_single_product_db = async (product_id: string): Promise<{ status: bool
 
   try {
     const query = `
-      SELECT * 
-      FROM products AS P
-      WHERE product_id = $1;
+      select p.*,(select avg(rating) from reviews as r  where r.product_id=p.product_id) as avg_rating from products as p where p.product_id=$1;
     `;
 
     const params: any[] = [product_id];

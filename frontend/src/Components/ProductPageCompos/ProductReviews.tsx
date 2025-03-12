@@ -4,12 +4,8 @@ import { memo } from "react";
 function ProductReviews({ product }: ProductReviewType) {
   return (
     <>
-      <Typography variant="body2" color="textSecondary" sx={{ marginTop: 1 }}>
-        {product?.shippingInformation} | {product?.warrantyInformation}
-      </Typography>
-      <Typography variant="body2" color="textSecondary" sx={{ marginTop: 1 }}>
-        {product?.returnPolicy}
-      </Typography>
+    
+      
       <Box sx={{ marginTop: 3 }}>
         <Typography variant="h6">Customer Reviews</Typography>
         {product?.reviews.map((review, index) => (
@@ -30,7 +26,7 @@ function ProductReviews({ product }: ProductReviewType) {
                 color: "text.primary",
               }}
             >
-              {review.comment}
+              {review.review}
             </Typography>
             <Typography
               sx={{
@@ -39,7 +35,7 @@ function ProductReviews({ product }: ProductReviewType) {
                 color: "text.secondary",
               }}
             >
-              - {review.reviewerName}
+              - {review.name}
             </Typography>
           </Box>
         ))}

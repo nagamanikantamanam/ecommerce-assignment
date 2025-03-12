@@ -8,6 +8,7 @@ import ProductPrice from "../ProductCardCompos/ProductPrice";
 import ProductRating from "../ProductCardCompos/ProductRating";
 import { memo } from "react";
 import { ProductCardProp } from "../../utils/Types/PropTypes";
+import getImmageUrl from "../../utils/getImageUrl";
 function Product({ product, index }: ProductCardProp) {
   return (
     <>
@@ -23,15 +24,15 @@ function Product({ product, index }: ProductCardProp) {
           }}
         >
           <ProductImage
-            image={product.images[0]}
+            image={product?.image ? getImmageUrl(product?.image):undefined}
             name={product.title}
           ></ProductImage>
           <ProductName name={product.title}></ProductName>
           <ProductPrice
             price={product.price}
-            discount={product.discountPercentage}
+            discount={product.discount}
           ></ProductPrice>
-          <ProductRating rating={product.rating}></ProductRating>
+          <ProductRating rating={Number(product.average_rating)}></ProductRating>
           <Box
             sx={{
               display: "flex",
@@ -40,12 +41,12 @@ function Product({ product, index }: ProductCardProp) {
               mt: 1,
             }}
           >
-            <BuyButton id={product.id}></BuyButton>
+            <BuyButton id={product.product_id}></BuyButton>
             <AddCartButton
-              id={product.id}
+              id={product.product_id}
               title={product.title}
               price={product.price}
-              image={product.images[0]}
+              image={product.image}
             ></AddCartButton>
           </Box>
         </Paper>

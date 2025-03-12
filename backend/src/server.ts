@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import {app} from "./app";
-import {  getpoolinstance} from "./db/getpoolinstance";
+
 dotenv.config({
     path:"./.env"
 })

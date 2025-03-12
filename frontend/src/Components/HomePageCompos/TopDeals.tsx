@@ -5,14 +5,15 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import useProducts from "../../helpers/hooks/useProducts";
 import Product from "../Cards/ProductCard";
 import settings from "../../utils/slidersettings";
 import { ProductType } from "../../utils/Types/CommonTypes";
 import useTopDeals from "../../helpers/hooks/useTopDeals";
 function TopDeals() {
-  const sliderRef = useRef(null);
-  const products: ProductType[] = useTopDeals();
+  const sliderRef = useRef<Slider>(null);
+  const { products } = useProducts();
+  
   return (
     <Box
       sx={{
@@ -49,7 +50,7 @@ function TopDeals() {
           </IconButton>
 
           <Slider ref={sliderRef} {...settings}>
-            {products.map((product, index) => (
+            {products?.slice(0,10).map((product, index) => (
               <Product product={product} index={index}></Product>
             ))}
           </Slider>

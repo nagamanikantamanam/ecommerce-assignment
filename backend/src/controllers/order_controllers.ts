@@ -5,15 +5,17 @@ import { get_all_orders_service } from '../services/get_all_orders_service';
 import { cancel_order_service } from '../services/cancel_order_service';
 import { update_order_status_service } from '../services/update_order_status_service';
 const create_order = async (req: Request, res: Response): Promise<any> => {
-  const { user_id, product_id } = req.body;
-
+  const {  product_id } = req.body;
+  console.log("ordering started");
+  const user_id=req.user_id
   if (!user_id || !product_id ) {
     return res.status(400).json({
       status: false,
       message: 'user_id, product_id, and status_id are required.',
     });
   }
-
+console.log("ordering started");
+console.log(product_id)
   try {
     const order_response = await create_order_service(user_id, product_id, 1);
 
@@ -34,14 +36,14 @@ export { create_order };
 
 
 const get_user_orders = async (req: Request, res: Response): Promise<any> => {
-  const {user_id} = req.body; 
+  const user_id = Number(req.user_id); 
   console.log('user_id',req.body);
   console.log("hiiiii");
 
   try {
     const response = await get_user_orders_service(user_id);
 
-    return res.status(response.statusCode).json(response.data);
+    return res.status(response.statusCode).json(response.data.orders);
   } catch (error) {
     console.error('Error while fetching user orders:', error);
 
@@ -57,7 +59,7 @@ export { get_user_orders };
 
 const cancel_order = async (req: Request, res: Response): Promise<any> => {
     console.log('cnacellll')
-  const {user_id} = req.body; 
+  const user_id= Number(req.user_id); 
   const order_id = parseInt(req.params.order_id, 10); 
 
   try {
@@ -98,8 +100,8 @@ export { get_all_orders };
 
 const update_order_status = async (req: Request, res: Response): Promise<any> => {
     console.log('update order status');
-    const {  new_status_code } = req.body;
-    const order_id = parseInt(req.params.order_id,10);
+    const {  new_status_code ,order_id} = req.body;
+   
   
     try {
       const response = await update_order_status_service(order_id,  new_status_code);
