@@ -17,26 +17,19 @@ const add_review_db = async ({
 
   try {
     const query = `
-      INSERT INTO reviews (user_id, order_id, rating, review, product_id)
-      VALUES ($1, $2, $3, $4, $5);
-    `;
+    CALL insert_review_and_update_stock($1, $2, $3, $4, $5);`;
 
-    const params = [user_id, order_id, rating, review, product_id];
+    const params = [user_id, order_id, rating, review,product_id];
     
     const result = await pool.query(query, params);
-    //console.log(result);
-    const rc:number=result.rowCount ||0;
-    if (rc > 0) {
+    console.log("result");
+    console.log(result);
+    
       return {
         status: true,
         message: 'Review added successfully.',
       };
-    } else {
-      return {
-        status: false,
-        message: 'Failed to add review.',
-      };
-    }
+   
   } catch (error) {
     console.error('Error adding review to DB:', error);
     return {
