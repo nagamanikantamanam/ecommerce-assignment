@@ -1,3 +1,17 @@
+interface ProductReview {
+  name: string;        
+  order_id: number;    
+  product_id: number;   
+  rating: number;       
+  review: string;       
+  review_id: number;   
+  user_id: number;      
+}
+
+
+
+
+
 export interface ProductType {
 
     average_rating: string;  
@@ -9,7 +23,7 @@ export interface ProductType {
     stock: number;
     title: string;
     image:string;
-    reviews?:[]
+    reviews?:ProductReview[]
   }
   
 
@@ -29,4 +43,6 @@ export interface ProductImageType {
   image: string | undefined;
   title: string | undefined;
 }
+
+
 export type ProductReviewType = { product: ProductType | undefined };

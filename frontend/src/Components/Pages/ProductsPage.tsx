@@ -1,5 +1,4 @@
 import {
-  Grid,
   Typography,
   Paper,
   Container,
@@ -10,15 +9,15 @@ import Product from "../Cards/ProductCard";
 import useProducts from "../../helpers/hooks/useProducts";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import Box from "@mui/material";
+import Grid from '@mui/material/Grid2';
 import { useState } from "react";
 const PAGE_SIZE=5;
-function ProductsPage() {
+const ProductsPage=()=>{
   console.log("product page");
   const [currentpage, setCP] = useState(1);
 
-  const { products, loading } = useProducts();
-  const totalProducts=products.length;
+const { products, loading } = useProducts();
+const totalProducts=products.length;
 const noofpages=Math.ceil(totalProducts/PAGE_SIZE);
 const start=(currentpage-1)*PAGE_SIZE;
 const end=start+PAGE_SIZE;
@@ -39,7 +38,7 @@ const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
       }}
     >
       <Grid container spacing={4}>
-        <Grid item xs={12} md={3}>
+        <Grid  size={{xs:12, md:3}}>
           <Paper
             sx={{
               p: 3,
@@ -61,7 +60,7 @@ const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
           </Paper>
         </Grid>
 
-        <Grid item xs={12} md={9}>
+        <Grid  size={{xs:12 ,md:9}}>
           {loading ? (
             <Grid
               container
@@ -87,12 +86,14 @@ const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
           )}
         </Grid>
       </Grid>
-      
+      <Grid
+              container
+              justifyContent="center">
       <Stack spacing={2}>
   
      <Pagination count={noofpages} variant="outlined" shape="rounded" onChange={handleChange}/>
     </Stack>
-   
+    </Grid>
     </Container>
   );
 }

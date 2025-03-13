@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import usePlaceOrder from "../../helpers/hooks/usePlaceOrder";
 
-function OrderPage() {
+const OrderPage=()=> {
   const { PlacingOrder, ErrMsg } = usePlaceOrder();
 
   return (

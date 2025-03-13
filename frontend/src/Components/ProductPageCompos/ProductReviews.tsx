@@ -1,14 +1,18 @@
-import { Typography, Rating, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { ProductReviewType } from "../../utils/Types/CommonTypes";
 import { memo } from "react";
-function ProductReviews({ product }: ProductReviewType) {
+
+const ProductReviews = ({ product }: ProductReviewType) => {
+  console.log(product);
+  if (!product) {
+    return <Typography>Reviews not present</Typography>;
+  }
+
   return (
-    <>
-    
-      
-      <Box sx={{ marginTop: 3 }}>
-        <Typography variant="h6">Customer Reviews</Typography>
-        {product?.reviews.map((review, index) => (
+    <Box sx={{ marginTop: 3 }}>
+      <Typography variant="h6">Customer Reviews</Typography>
+      {product?.reviews && product.reviews.length > 0 ? (
+        product.reviews.map((review, index) => (
           <Box
             key={index}
             sx={{
@@ -16,9 +20,10 @@ function ProductReviews({ product }: ProductReviewType) {
               padding: 2,
               borderRadius: "8px",
               boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)",
+              marginTop: 2,
             }}
           >
-            <Rating value={review.rating} readOnly />
+            
             <Typography
               sx={{
                 fontSize: "1rem",
@@ -38,9 +43,12 @@ function ProductReviews({ product }: ProductReviewType) {
               - {review.name}
             </Typography>
           </Box>
-        ))}
-      </Box>
-    </>
+        ))
+      ) : (
+        <Typography>No reviews available</Typography>
+      )}
+    </Box>
   );
-}
+};
+
 export default memo(ProductReviews);

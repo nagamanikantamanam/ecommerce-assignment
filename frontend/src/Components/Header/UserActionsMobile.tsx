@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import useMenuStore from "../../Stores/MenuStore";
-function UserActionsMobile() {
+const UserActionsMobile=()=>{
   const handleMobileMenuOpen = useMenuStore(
     (state) => state.handleMobileMenuOpen
   );

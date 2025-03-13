@@ -5,7 +5,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import useMenuStore from "../../Stores/MenuStore";
-function ProfileMenuMobile() {
+const ProfileMenuMobile=()=>{
   const mobileMoreAnchorEl = useMenuStore((state) => state.mobileMoreAnchorEl);
   const isMobileMenuOpen = useMenuStore((state) => state.isMobileMenuOpen);
   const handleMobileMenuClose = useMenuStore((state) => state.handleMenuClose);

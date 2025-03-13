@@ -3,7 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import useMenuStore from "../../Stores/MenuStore";
 import useAuthStore from "../../Stores/useAuthStore";
 import { useNavigate } from "react-router-dom";
-function ProfileMenuOpen() {
+const ProfileMenuOpen=()=>{
   const navigate=useNavigate();
   const anchorEl = useMenuStore((state) => state.anchorEl);
   const handleMenuClose = useMenuStore((state) => state.handleMenuClose);

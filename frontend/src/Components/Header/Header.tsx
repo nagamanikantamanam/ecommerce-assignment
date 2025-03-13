@@ -14,7 +14,7 @@ import {   Outlet } from "react-router-dom";
 import LoginPage from "../Pages/LoginPage"
 
 import useMenuStore from "../../Stores/MenuStore";
-export default function Header() {
+const Header=()=> {
 
   const user = useAuthStore((state) => state.user);
   const setLoginOpen=useMenuStore((state)=>state.setLoginOpen);
@@ -55,3 +55,4 @@ export default function Header() {
     </>
   );
 }
+export default Header;

@@ -1,10 +1,12 @@
-import { Grid, Typography, Paper } from "@mui/material";
+import { Typography, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 import { CategoryCardProps } from "../../utils/Types/PropTypes";
 import { memo } from "react";
-function CategoryCard({ icon, name, index }: CategoryCardProps) {
+import Grid from '@mui/material/Grid2';
+
+const CategoryCard=({ icon, name, index }: CategoryCardProps) =>{
   return (
-    <Grid item xs={6} sm={3} key={index}>
+    <Grid  size={{xs:6, sm:3}} key={index}>
       <Paper
         component={Link}
         to={`products/?searchquery=&category=${name}&minp=10&maxp=100000&minrat=0`}

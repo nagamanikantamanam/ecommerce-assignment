@@ -1,31 +1,33 @@
-import { Container, Grid, Box, CircularProgress } from "@mui/material";
+import { Container, Box, CircularProgress } from "@mui/material";
 import ProductImage from "../ProductPageCompos/ProductImage";
 import UserActions from "../ProductPageCompos/UserActions";
 import ProductDetails from "../ProductPageCompos/ProductDeatils";
 import useProduct from "../../helpers/hooks/useProduct";
-import getImmageUrl from "../../utils/getImageUrl";
-function Product() {
+import getImageUrl from "../../utils/getImageUrl";
+import { styled } from '@mui/system';
+import Grid from '@mui/material/Grid2';
+const StyledBox = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "100vh",
+});
+
+const Product = () => {
   const { product, loading } = useProduct();
 
   if (loading) {
     return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
+      <StyledBox>
         <CircularProgress size={50} />
-      </Box>
+      </StyledBox>
     );
   }
-
+else{
   return (
     <Container maxWidth="lg" sx={{ marginTop: 5 }}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs:12, sm:6, md:4}}>
           <Box
             sx={{
               position: "sticky",
@@ -35,16 +37,24 @@ function Product() {
             }}
           >
             <ProductImage
-              image={product?.image ? getImmageUrl(product?.image):undefined}
+              image={product?.image ? getImageUrl(product?.image) : undefined}
               title={product?.title}
-            ></ProductImage>
-            {product && <UserActions product={product}></UserActions>}
+            />
+            {product && <UserActions product={product} />}
           </Box>
         </Grid>
-        {product && <ProductDetails product={product}></ProductDetails>}
+
+        <Grid size={{xs:12, sm:6, md:8}}>
+        {product ? (
+  <ProductDetails product={product} />
+) : (
+  <Box sx={{ textAlign: 'center' }}>Loading or No Product Found</Box>
+)}
+
+        </Grid>
       </Grid>
     </Container>
-  );
-}
+  );}
+};
 
 export default Product;

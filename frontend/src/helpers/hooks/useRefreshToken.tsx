@@ -1,10 +1,10 @@
-import { api_private } from "../../utils/api";
+import { private_api } from "../../utils/api";
 import useAuthStore from "../../Stores/useAuthStore";
 const useRefreshToken = (): (() => Promise<string>) => {
   const { setAcessToken, refreshToken } = useAuthStore();
   //const api_private = useAxiosPrivate();
   const refresh = async (): Promise<string> => {
-    const response = await api_private.post<{ accessToken: string }>(
+    const response = await private_api.post<{ accessToken: string }>(
       "/auth/refresh",
       {
         refreshToken: refreshToken,

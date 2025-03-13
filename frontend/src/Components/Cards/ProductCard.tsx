@@ -1,7 +1,6 @@
 import { Box, Paper } from "@mui/material";
 import BuyButton from "../Buttons/BuyButton";
 import AddCartButton from "../Buttons/AddCartButton";
-
 import ProductImage from "../ProductCardCompos/ProductImage";
 import ProductName from "../ProductCardCompos/ProductName";
 import ProductPrice from "../ProductCardCompos/ProductPrice";
@@ -9,20 +8,27 @@ import ProductRating from "../ProductCardCompos/ProductRating";
 import { memo } from "react";
 import { ProductCardProp } from "../../utils/Types/PropTypes";
 import getImmageUrl from "../../utils/getImageUrl";
+import { styled } from '@mui/system';
+const StyledPaper=styled(Paper)({
+  p: 2,
+  textAlign: "center",
+  borderRadius: "10px",
+  transition: "0.3s",
+  "&:hover": { transform: "scale(1.05)" },
+})
+const StyledBox=styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  gap: 1,
+  mt: 1,
+})
 function Product({ product, index }: ProductCardProp) {
   return (
     <>
       <Box key={index} sx={{ px: 3, m: 3 }}>
-        <Paper
+        <StyledPaper
           elevation={3}
-          sx={{
-            p: 2,
-            textAlign: "center",
-            borderRadius: "10px",
-            transition: "0.3s",
-            "&:hover": { transform: "scale(1.05)" },
-          }}
-        >
+          >
           <ProductImage
             image={product?.image ? getImmageUrl(product?.image):undefined}
             name={product.title}
@@ -33,7 +39,7 @@ function Product({ product, index }: ProductCardProp) {
             discount={product.discount}
           ></ProductPrice>
           <ProductRating rating={Number(product.average_rating)}></ProductRating>
-          <Box
+          <StyledBox
             sx={{
               display: "flex",
               justifyContent: "center",
@@ -48,8 +54,8 @@ function Product({ product, index }: ProductCardProp) {
               price={product.price}
               image={product.image}
             ></AddCartButton>
-          </Box>
-        </Paper>
+          </StyledBox>
+        </StyledPaper>
       </Box>
     </>
   );

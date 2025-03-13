@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import useAuthStore from "../../Stores/useAuthStore";
-import { api_public } from "../../utils/api";
+import { public_api } from "../../utils/api";
 import useMenuStore from "../../Stores/MenuStore"
 
 interface LoginResponse {
@@ -27,7 +27,7 @@ console.log("login hook")
     console.log("calleld login")
     try {
       
-      const response = await api_public.post<LoginResponse>(
+      const response = await public_api.post<LoginResponse>(
         "auth/login",
         {mobile:isNaN(username as any)?"":username, email:isNaN(username as any)?username:"", password },
         { headers: { "Content-Type": "application/json" } }

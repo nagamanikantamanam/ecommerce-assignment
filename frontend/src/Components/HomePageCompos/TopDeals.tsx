@@ -8,9 +8,9 @@ import "slick-carousel/slick/slick-theme.css";
 import useProducts from "../../helpers/hooks/useProducts";
 import Product from "../Cards/ProductCard";
 import settings from "../../utils/slidersettings";
-import { ProductType } from "../../utils/Types/CommonTypes";
-import useTopDeals from "../../helpers/hooks/useTopDeals";
-function TopDeals() {
+import { styled } from '@mui/system';
+
+const TopDeals=()=>{
   const sliderRef = useRef<Slider>(null);
   const { products } = useProducts();
   
@@ -43,7 +43,7 @@ function TopDeals() {
               backgroundColor: "#fff",
               boxShadow: 2,
               "&:hover": { backgroundColor: "#ddd" },
-              display: { xs: "none", sm: "flex" }, // Hide on small screens
+              display: { xs: "none", sm: "flex" }, 
             }}
           >
             <ArrowBackIosIcon />

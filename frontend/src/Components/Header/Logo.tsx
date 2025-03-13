@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-function Logo() {
+const Logo=()=>{
   const navigate = useNavigate();
   return (
     <Typography

@@ -4,7 +4,7 @@ import useMenuStore from "../../Stores/MenuStore";
 import useCartStore from "../../Stores/useCartStore";
 import CartItemComp from "../Cards/CartItem";
 
-function CartMenu() {
+const  CartMenu=()=>{
   const cartAnchorEl = useMenuStore((state) => state.cartAnchorEl);
   const handleCartMenuClose = useMenuStore(
     (state) => state.handleCartMenuClose

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductType } from "../../utils/Types/CommonTypes";
-import { api_public } from "../../utils/api";
+import { public_api } from "../../utils/api";
 
 function useProduct() {
   const { id } = useParams();
@@ -14,7 +14,7 @@ console.log("rtfygjhkhhg")
       setLoading(true);
       try {
         console.log("tryyy")
-        const response = await api_public.get<ProductType>(`/product/${id}`);
+        const response = await public_api.get<ProductType>(`/product/${id}`);
         console.log(response.data)
         setProduct(response.data);
       } catch (error) {

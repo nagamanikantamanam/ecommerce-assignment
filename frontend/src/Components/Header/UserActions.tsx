@@ -5,7 +5,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import useMenuStore from "../../Stores/MenuStore";
 import useCartStore from "../../Stores/useCartStore";
-function UserActions() {
+const UserActions=()=>{
   const handleProfileMenuOpen = useMenuStore(
     (state) => state.handleProfileMenuOpen
   );

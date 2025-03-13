@@ -5,7 +5,7 @@ import StyledInputBase from "./StyledInputBase";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-function SearchBox() {
+const SearchBox=()=>{
   const navigate = useNavigate();
   const [TempQuery, setTempQuery] = useState("");
 

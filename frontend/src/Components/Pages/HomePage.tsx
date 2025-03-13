@@ -1,6 +1,6 @@
 import Categories from "../HomePageCompos/Categories/Categories";
 import TopDeals from "../HomePageCompos/TopDeals";
-function Home() {
+const Home=()=>{
   return (
     <>
       <Categories></Categories>

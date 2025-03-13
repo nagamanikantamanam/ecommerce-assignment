@@ -3,10 +3,8 @@ import MinRating from "./MinRating";
 import { Button, Typography } from "@mui/material";
 import useFilterStore from "../../Stores/FilterSore";
 import { useNavigate } from "react-router-dom";
-
-
 import SendIcon from '@mui/icons-material/Send';
-import Stack from '@mui/material/Stack';
+
 function Filters() {
   const { priceRange } = useFilterStore();
   const { rating } = useFilterStore();

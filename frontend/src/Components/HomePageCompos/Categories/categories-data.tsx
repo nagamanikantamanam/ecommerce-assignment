@@ -1,4 +1,3 @@
-import FaceRetouchingNaturalIcon from "@mui/icons-material/FaceRetouchingNatural";
 import ChairIcon from "@mui/icons-material/Chair";
 import FilterVintageIcon from "@mui/icons-material/FilterVintage";
 import DvrIcon from '@mui/icons-material/Dvr';

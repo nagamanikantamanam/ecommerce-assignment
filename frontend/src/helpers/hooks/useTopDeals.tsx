@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ProductType } from "../../utils/Types/CommonTypes";
-import { api_public } from "../../utils/api";
+import { public_api } from "../../utils/api";
 
 function useTopDeals() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -8,17 +8,12 @@ function useTopDeals() {
   useEffect(() => {
     async function getD() {
       try {
-        let response = await api_public.get<{ products: ProductType[] }>(
+        let response = await public_api.get<{ products: ProductType[] }>(
           "/products"
         );
 
         if (response.data && response.data.products) {
-          const sortedProducts: ProductType[] = response.data.products
-            .sort(
-              (a: ProductType, b: ProductType) =>
-                b.discountPercentage - a.discountPercentage
-            )
-            .slice(0, 10);
+          const sortedProducts: ProductType[] = response.data.products.slice(0, 10);
 
           setProducts(sortedProducts);
         }

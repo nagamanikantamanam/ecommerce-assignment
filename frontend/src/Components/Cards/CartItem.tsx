@@ -6,7 +6,8 @@ import BuyButton from "../Buttons/BuyButton";
 import { CartItem } from "../../utils/Types/CommonTypes";
 import { memo } from "react";
 import RemoveFromCart from "../Buttons/RemoveFromCart";
-function CartItemComp({ id, image, price, title }: CartItem) {
+
+const CartItemComp=({ id, image, price, title }: CartItem)=> {
   return (
     <MenuItem key={id}>
       <Box display="flex" alignItems="center" gap={2} sx={{ m: 1 }}>

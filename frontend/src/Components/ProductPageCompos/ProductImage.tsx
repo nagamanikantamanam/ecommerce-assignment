@@ -1,6 +1,7 @@
 import { ProductImageType } from "../../utils/Types/CommonTypes";
 import { memo } from "react";
-function ProductImage({ image, title }: ProductImageType) {
+
+const ProductImage = ({ image, title }: ProductImageType) => {
   return (
     <img
       src={image}
@@ -8,5 +9,6 @@ function ProductImage({ image, title }: ProductImageType) {
       style={{ width: "100%", height: "auto", objectFit: "cover" }}
     />
   );
-}
+};
+
 export default memo(ProductImage);

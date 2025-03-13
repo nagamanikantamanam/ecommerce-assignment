@@ -1,7 +1,9 @@
-import { Box, Grid, Typography, Container } from "@mui/material";
+import { Box, Typography, Container } from "@mui/material";
 import CategoryCard from "../../Cards/CategoryCard";
 import categories from "./categories-data";
-function Categories() {
+import Grid from '@mui/material/Grid2';
+
+const Categories=()=>{
   return (
     <Box
       sx={{

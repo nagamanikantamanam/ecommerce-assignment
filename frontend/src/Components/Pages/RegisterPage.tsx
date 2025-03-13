@@ -1,7 +1,7 @@
 import  { useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import { api_public } from "../../utils/api";
+import { public_api } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 const StyledBox = styled(Box)({
   display: 'flex',
@@ -25,7 +25,7 @@ const RegisterPage = () => {
   const handleRegister =async () => {
     try{
      
-    await api_public.post('user/adduser',{email,mobile,username,password});
+    await public_api.post('user/adduser',{email,mobile,username,password});
     
     navigate(`/`);
     }catch(err){
