@@ -20,16 +20,17 @@ const router = createBrowserRouter([
       { path: "/register", element: <RegisterPage /> },
       {
         element: <RequireAuth allow="1" />,
-        children: [{ path: "/ordernow/:product_id", element: <OrderPage /> },
-          {path:"/profile",element:<UserProfilePage></UserProfilePage>}
+        children: [
+          { path: "/ordernow/:product_id", element: <OrderPage /> },
+          { path: "/profile", element: <UserProfilePage></UserProfilePage> },
         ],
       },
       {
         element: <RequireAuth allow="2" />,
-        
+
         children: [{ path: "/admin", element: <AdminPage /> }],
       },
-      
+
       { path: "*", element: <h1>Page Not Available</h1> },
     ],
   },

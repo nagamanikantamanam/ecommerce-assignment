@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2024",
-    "module": "NodeNext",
+    "target": "ES2023", // Node.js v22 supports all features of ES2023, so the target should be ES2023.
+    "module": "CommonJS",
     "rootDir": "./src",
     "outDir": "./dist",
     "esModuleInterop": true,

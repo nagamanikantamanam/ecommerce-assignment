@@ -1,31 +1,26 @@
-import {
-  Typography,
-  Paper,
-  Container,
-  CircularProgress,
-} from "@mui/material";
+import { Typography, Paper, Container, CircularProgress } from "@mui/material";
 import Filters from "../ProductsPageCompos/Filters";
 import Product from "../Cards/ProductCard";
 import useProducts from "../../helpers/hooks/useProducts";
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import Grid from '@mui/material/Grid2';
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import Grid from "@mui/material/Grid2";
 import { useState } from "react";
-const PAGE_SIZE=5;
-const ProductsPage=()=>{
+const PAGE_SIZE = 5;
+const ProductsPage = () => {
   console.log("product page");
   const [currentpage, setCP] = useState(1);
 
-const { products, loading } = useProducts();
-const totalProducts=products.length;
-const noofpages=Math.ceil(totalProducts/PAGE_SIZE);
-const start=(currentpage-1)*PAGE_SIZE;
-const end=start+PAGE_SIZE;
-const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-  console.log("currentpage",currentpage);
-  console.log("value",value)
-  setCP(value);
-};
+  const { products, loading } = useProducts();
+  const totalProducts = products.length;
+  const noofpages = Math.ceil(totalProducts / PAGE_SIZE);
+  const start = (currentpage - 1) * PAGE_SIZE;
+  const end = start + PAGE_SIZE;
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    console.log("currentpage", currentpage);
+    console.log("value", value);
+    setCP(value);
+  };
 
   return (
     <Container
@@ -38,7 +33,7 @@ const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
       }}
     >
       <Grid container spacing={4}>
-        <Grid  size={{xs:12, md:3}}>
+        <Grid size={{ xs: 12, md: 3 }}>
           <Paper
             sx={{
               p: 3,
@@ -60,7 +55,7 @@ const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
           </Paper>
         </Grid>
 
-        <Grid  size={{xs:12 ,md:9}}>
+        <Grid size={{ xs: 12, md: 9 }}>
           {loading ? (
             <Grid
               container
@@ -72,7 +67,7 @@ const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
             </Grid>
           ) : products.length > 0 ? (
             <Grid container spacing={3}>
-              {products.slice(start,end).map((product, index) => (
+              {products.slice(start, end).map((product, index) => (
                 <Product product={product} index={index} key={index} />
               ))}
             </Grid>
@@ -86,16 +81,18 @@ const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
           )}
         </Grid>
       </Grid>
-      <Grid
-              container
-              justifyContent="center">
-      <Stack spacing={2}>
-  
-     <Pagination count={noofpages} variant="outlined" shape="rounded" onChange={handleChange}/>
-    </Stack>
-    </Grid>
+      <Grid container justifyContent="center">
+        <Stack spacing={2}>
+          <Pagination
+            count={noofpages}
+            variant="outlined"
+            shape="rounded"
+            onChange={handleChange}
+          />
+        </Stack>
+      </Grid>
     </Container>
   );
-}
+};
 
 export default ProductsPage;
