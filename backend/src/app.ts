@@ -6,7 +6,7 @@ import { product_router } from './routes/product_routes';
 import { orders_router } from './routes/order_routes';
 import handleerror from './middlewares/handleerror';
 import cors from 'cors';
-const port = 3000;
+
 export const app = express();
 app.use(express.json());
 app.use(cors({
