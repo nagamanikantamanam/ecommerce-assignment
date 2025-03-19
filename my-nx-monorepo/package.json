@@ -1,0 +1,18 @@
+{
+  "name": "@my-nx-monorepo/source",
+  "version": "0.0.0",
+  "license": "MIT",
+"scripts": {
+    "dev": "concurrently \"nx serve app-frontend\" \"nx serve api-backend\"",
+    "start":"concurrently \"pnpm --filter frontend dev\" \"pnpm --filter api-backend start\"",
+   "build": "nx run-many --target=build --parallel"
+   
+  },
+  "private": true,
+  "devDependencies": {
+    "@nx/js": "20.6.1",
+    "@nx/workspace": "20.6.1",
+    "concurrently": "^9.1.2",
+    "nx": "20.6.1"
+  }
+}
