@@ -1,0 +1,155 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.6.1",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".gitignore",
+        "hash": "11612638887042922903"
+      },
+      {
+        "file": "nx.json",
+        "hash": "745553123467245468"
+      },
+      {
+        "file": "package.json",
+        "hash": "5391048442756972375"
+      },
+      {
+        "file": "packages/package.json",
+        "hash": "8755980399344028251"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "16693791715230667137"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "9750177317466281158"
+      }
+    ],
+    "projectFileMap": {
+      "my-remix-app": [
+        {
+          "file": "apps/my-remix-app/.eslintrc.cjs",
+          "hash": "7641779309036131719"
+        },
+        {
+          "file": "apps/my-remix-app/.gitignore",
+          "hash": "2267986781002139465"
+        },
+        {
+          "file": "apps/my-remix-app/README.md",
+          "hash": "2643931112379010498"
+        },
+        {
+          "file": "apps/my-remix-app/app/entry.client.tsx",
+          "hash": "5186934067478039483"
+        },
+        {
+          "file": "apps/my-remix-app/app/entry.server.tsx",
+          "hash": "3025734087346391440"
+        },
+        {
+          "file": "apps/my-remix-app/app/index.tsx",
+          "hash": "10899225878057625626"
+        },
+        {
+          "file": "apps/my-remix-app/app/root.tsx",
+          "hash": "17137202507777218203"
+        },
+        {
+          "file": "apps/my-remix-app/app/routes/_index.tsx",
+          "hash": "14081086763902364351"
+        },
+        {
+          "file": "apps/my-remix-app/app/tailwind.css",
+          "hash": "1159213984296909414"
+        },
+        {
+          "file": "apps/my-remix-app/package.json",
+          "hash": "4065195012822341700",
+          "deps": [
+            "npm:@remix-run/dev",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:@typescript-eslint/eslint-plugin",
+            "npm:@typescript-eslint/parser",
+            "npm:autoprefixer",
+            "npm:eslint",
+            "npm:eslint-import-resolver-typescript",
+            "npm:eslint-plugin-import",
+            "npm:eslint-plugin-jsx-a11y",
+            "npm:eslint-plugin-react",
+            "npm:eslint-plugin-react-hooks",
+            "npm:postcss",
+            "npm:tailwindcss",
+            "npm:typescript",
+            "npm:vite@6.2.2",
+            "npm:vite-tsconfig-paths",
+            "npm:@remix-run/node",
+            "npm:@remix-run/react",
+            "npm:@remix-run/serve",
+            "npm:isbot",
+            "npm:react",
+            "npm:react-dom",
+            "shared-ui"
+          ]
+        },
+        {
+          "file": "apps/my-remix-app/postcss.config.js",
+          "hash": "1886002347757770194"
+        },
+        {
+          "file": "apps/my-remix-app/public/favicon.ico",
+          "hash": "3730367829618743876"
+        },
+        {
+          "file": "apps/my-remix-app/public/logo-dark.png",
+          "hash": "2151824327557069041"
+        },
+        {
+          "file": "apps/my-remix-app/public/logo-light.png",
+          "hash": "17900532124686567140"
+        },
+        {
+          "file": "apps/my-remix-app/tailwind.config.ts",
+          "hash": "1603803244841878876"
+        },
+        {
+          "file": "apps/my-remix-app/tsconfig.json",
+          "hash": "11447546127494410491"
+        },
+        {
+          "file": "apps/my-remix-app/vite.config.ts",
+          "hash": "586226962841137628"
+        }
+      ],
+      "shared-ui": [
+        {
+          "file": "packages/shared-ui/Button.tsx",
+          "hash": "2667008783683834777"
+        },
+        {
+          "file": "packages/shared-ui/index.tsx",
+          "hash": "5741027201758886299"
+        },
+        {
+          "file": "packages/shared-ui/package.json",
+          "hash": "10583459593328426723",
+          "deps": [
+            "npm:@types/react",
+            "npm:react",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/shared-ui/tsconfig.json",
+          "hash": "9836472428251817999"
+        }
+      ]
+    }
+  }
+}

@@ -1,16 +1,12 @@
 {
-  "name": "pnpm-mono",
+  "name": "d",
   "version": "1.0.0",
-  "description": "",
+  "type":"module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.5.2",
-  "devDependencies": {
-    "nx": "^20.6.1"
-  }
+  "description": ""
 }

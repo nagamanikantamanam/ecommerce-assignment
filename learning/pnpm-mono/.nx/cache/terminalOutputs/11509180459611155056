@@ -1,0 +1,4 @@
+
+> shared-ui@1.0.0 build /Users/nagamanikanta/ecommerce-assignment/learning/pnpm-mono/packages/shared-ui
+> rm -rf dist && tsc
+

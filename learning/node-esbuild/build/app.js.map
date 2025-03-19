@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/app.ts"],
+  "sourcesContent": ["import express, { Request, Response } from \"express\";\n\nconst app = express();\n\napp.use(express.json());\n\napp.get(\"/\", (req: Request, res: Response) => {\n    res.json({ message: 'Hello, World Wide Web!' });\n});\n\nconst start = async (): Promise<void> => {\n  try {\n    app.listen(3000, () => {\n      console.log(\"Server started on port 3000\");\n    });\n  } catch (error) {\n    console.error(error);\n    process.exit(1);\n  }\n};\n\nvoid start();"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA,qBAA2C;AAE3C,MAAM,UAAM,eAAAA,SAAQ;AAEpB,IAAI,IAAI,eAAAA,QAAQ,KAAK,CAAC;AAEtB,IAAI,IAAI,KAAK,CAAC,KAAc,QAAkB;AAC1C,MAAI,KAAK,EAAE,SAAS,yBAAyB,CAAC;AAClD,CAAC;AAED,MAAM,QAAQ,YAA2B;AACvC,MAAI;AACF,QAAI,OAAO,KAAM,MAAM;AACrB,cAAQ,IAAI,6BAA6B;AAAA,IAC3C,CAAC;AAAA,EACH,SAAS,OAAO;AACd,YAAQ,MAAM,KAAK;AACnB,YAAQ,KAAK,CAAC;AAAA,EAChB;AACF;AAEA,KAAK,MAAM;",
+  "names": ["express"]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "esbuild",
+  "version": "1.0.0",
+  "main": "index.js",
+ 
+   "scripts": {
+  "build": "node esbuild.config.js",
+  "start": "node dist/bundle.js",
+  "dev": "nodemon --exec 'node esbuild.config.js' --watch src"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.10",
+    "esbuild": "^0.25.1",
+    "esbuild-node-tsc": "^2.0.5",
+    "nodemon": "^3.1.9",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
